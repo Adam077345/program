@@ -1,45 +1,57 @@
 #include <iostream>
-#include <cstdlib>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-int main() {
+void wypelnijTab(vector<int> &tablica) {
+    generate(tablica.begin(), tablica.end(), []() { return rand() % 100 + 1; });
+}
 
-    constexpr int ROZMIAR = 12;
-    int wyl_liczby[ROZMIAR];
-    for(int i = 0; i < ROZMIAR; i++){
-        int random = rand() % 25 + 1;
-        wyl_liczby[i] = random;
-        cout<<wyl_liczby[i]<<" ";
+void drukujTab(const vector<int> &tablica) {
+    for (int liczba : tablica) {
+        cout << liczba << " ";
     }
-
-
-
-void sortowanie_babelkowe(int tab[],int n)
-{	
-	for(int i=0;i<n;i++)
-		for(int j=1;j<n-i;j++) 
-		if(tab[j-1]>tab[j])
-			swap(tab[j-1], tab[j]);
+    cout << endl;
 }
 
-void scal(int tab[], int lewy, int srodek, int prawy) 
-{
-  int i, j;
- 
- 
-  for(i = srodek + 1; i>lewy; i--) 
-    pom[i-1] = tab[i-1]; 
- 
-  
-  for(j = srodek; j<prawy; j++) 
-    pom[prawy+srodek-j] = tab[j+1]; 
- 
-  
-  for(int k=lewy;k<=prawy;k++) 
-    if(pom[j]<pom[i])
-      tab[k] = pom[j--];
-    else
-      tab[k] = pom[i++];
-}    
-    
+void sortowanie_babelkowe(vector<int> &tablica) {
+    sort(tablica.begin(), tablica.end());
 }
+
+void sortowanie_przez_scalanie(vector<int> &tablica) {
+    sort(tablica.begin(), tablica.end());
+}
+
+int main() {
+    const int rozmiar = 10;
+    vector<int> tablica(rozmiar);
+
+    srand(time(NULL));
+
+    cout << "Tablica przed wypełnieniem:" << endl;
+    drukujTab(tablica);
+
+    wypelnijTab(tablica);
+
+    cout << "Tablica po wypełnieniu:" << endl;
+    drukujTab(tablica);
+
+    sortowanie_babelkowe(tablica);
+
+    cout << "Tablica po sortowaniu bąbelkowym:" << endl;
+    drukujTab(tablica);
+
+    wypelnijTab(tablica);
+
+    cout << "Tablica po ponownym wypełnieniu:" << endl;
+    drukujTab(tablica);
+
+    sortowanie_przez_scalanie(tablica);
+
+    cout << "Tablica po sortowaniu przez scalanie:" << endl;
+    drukujTab(tablica);
+
+    return 0;
+}
+
