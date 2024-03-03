@@ -4,7 +4,7 @@
 #include <ctime>
 #include <algorithm>
 #include <bits/stdc++.h>
-#include "los.hpp"
+#include "sort.hpp"
 
 using namespace std;
 
