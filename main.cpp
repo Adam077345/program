@@ -1,3 +1,13 @@
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+using namespace std;
+#include <bits/stdc++.h>
+#include "sort.hpp"
+
+
 int main() {
     constexpr int SIZE = 12;
     int arr[SIZE];
